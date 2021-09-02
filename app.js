@@ -22,13 +22,13 @@ const searchBook = () => {
     const searchField = document.getElementById('search-book');
     const searchText = searchField.value;
     searchField.value = '';
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
         .then(Response => Response.json())
         .then(data => displaySearchBook(data.docs))
 
     //count book number api call
-    const url2 = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url2 = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url2)
         .then(Response => Response.json())
         .then(data => displayNumber(data.numFound))
@@ -70,6 +70,8 @@ const displaySearchBook = books => {
                         <div class="card-body">
                             <h5 class="card-title">${book.title ? book.title : 'Not Available'}</h5>
                             <p class="card-text">Author : ${book.author_name ? book.author_name : 'Not Available'}</p>
+                            <p><span class = "fs-6">Publisher : </span>${book.publisher ? book.publisher[0] : 'Not avaiable'} </p>
+                           <br>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Published : ${book.first_publish_year ? book.first_publish_year : 'Not Available'}</small>
