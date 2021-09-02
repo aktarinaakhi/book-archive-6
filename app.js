@@ -19,6 +19,7 @@ const searchBook = () => {
     toggleSpinner('block');
     toggleSearchResult('none');
     toggleBooksCount('none');
+    toggleBooksError('none')
     const searchField = document.getElementById('search-book');
     const searchText = searchField.value;
     searchField.value = '';
